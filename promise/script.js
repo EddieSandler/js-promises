@@ -13,19 +13,19 @@
 
 // })
 
-// //exercise 2 multiple numbers
-// let numbers=[12,16,34]
-// url=`http://numbersapi.com/${numbers}`
+//exercise 2 multiple numbers
+let numbers=[12,16,34]
+url=`http://numbersapi.com/${numbers}`
 
-// axios.get(url)
-// .then(response=>{
-//   console.log(response.data)
-// })
-// .catch(error => {
-//     console.error('There was an error!', error);
+axios.get(url)
+.then(response=>{
+  console.log(response.data)
+})
+.catch(error => {
+    console.error('There was an error!', error);
 
 
-// })
+})
 
 
 //exercise 3 - 4 facts
@@ -99,81 +99,81 @@
 //add card to pile
 //when remaining cards = 0 end
 
-let deckID;
-let card;
+// let deckID;
+// let card;
 
-//shuffle cards
-function shuffleCards(){
-let url='https:deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
-axios.get(url)
-.then(response=>{
-  //get deck id of shuffled deck to pass to the url to draw a card
- deckID=response.data.deck_id
-  console.log(deckID)
-})
+// //shuffle cards
+// function shuffleCards(){
+// let url='https:deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
+// axios.get(url)
+// .then(response=>{
+//   //get deck id of shuffled deck to pass to the url to draw a card
+//  deckID=response.data.deck_id
+//   console.log(deckID)
+// })
 
-}
-window.onload=shuffleCards
+// }
+// window.onload=shuffleCards
 
- function drawCard(){
+//  function drawCard(){
 
-  axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
-  .then(response => {
-    card = response.data.cards[0].code; // Access cards array
+//   axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
+//   .then(response => {
+//     card = response.data.cards[0].code; // Access cards array
 
-    return axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/add/?cards=${card}`)
-  })
-  .then(()=>{
-    return axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/list/`)
-  })
-
-
-    .then(response=>{
-    let cards=response.data.piles.thePile.cards
-    let pile=document.getElementById('card-pile')
-    pile.innerHTML=''
-    console.log(cards.length)
-    if(cards.length <51){
+//     return axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/add/?cards=${card}`)
+//   })
+//   .then(()=>{
+//     return axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/list/`)
+//   })
 
 
-
-
-    cards.map((card)=>{
-      let cardImageLink = card.images.png
-
-      let img = document.createElement('img');
-    img.src=cardImageLink
-
-
-
-    pile.append(img)
-
-
-    })
-  }
-
-  })
-  .catch(error => {
-    console.error('No more remaining cards:', error);
-   
-  });
-
-
- }
+//     .then(response=>{
+//     let cards=response.data.piles.thePile.cards
+//     let pile=document.getElementById('card-pile')
+//     pile.innerHTML=''
+//     console.log(cards.length)
+//     if(cards.length <51){
 
 
 
 
-  // axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/add/?cards=${card}`)
-  // .then(response => {
-  //   console.log(response)
-  // })
-  // axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/list/`)
-  // .then(response => {
-  //   console.log(response)
-  // })
+//     cards.map((card)=>{
+//       let cardImageLink = card.images.png
 
-  // }
+//       let img = document.createElement('img');
+//     img.src=cardImageLink
+
+
+
+//     pile.append(img)
+
+
+//     })
+//   }
+
+//   })
+//   .catch(error => {
+//     console.error('No more remaining cards:', error);
+
+//   });
+
+
+//  }
+
+
+
+
+//   // axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/add/?cards=${card}`)
+//   // .then(response => {
+//   //   console.log(response)
+//   // })
+//   // axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/pile/thePile/list/`)
+//   // .then(response => {
+//   //   console.log(response)
+//   // })
+
+//   // }
 
 
 

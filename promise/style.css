@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4CAF50;
+}
+#card-button {
+  position:fixed;
+  top:10px;
+  left:50%;
+  padding: 20px 40px;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Simple shadow for effect */
+}
+
+
+#card-pile {
+  position: relative; /* Parent should be relative */
+  width: [WidthOfCard]px; /* Set to width of cards */
+  height: [HeightOfCard]px; /* Set to height of cards */
+}
+
+#card-pile img {
+  position: absolute; /* Absolute positioning inside relative parent */
+  top: 0;
+  left: 0;
+}
